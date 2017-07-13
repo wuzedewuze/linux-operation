@@ -13,7 +13,7 @@ def main():
     if os.path.isdir(monit_dir):
         do_monit(monit_dir) 
     else:
-        print monit_dir,"目录不存在"
+        print "目录不存在"
 
 
 if __name__ == '__main__':

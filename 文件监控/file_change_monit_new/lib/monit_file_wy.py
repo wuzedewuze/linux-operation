@@ -57,6 +57,14 @@ class EventHandler(ProcessEvent):
         pass
 
 
+    def process_IN_MODIFY(self, event):
+        pass
+
+    def process_IN_DELETE(self, event):
+        pass
+
+
+
 #主方法，执行调用监控
 def do_monit(monit_path='./'):
     wm = WatchManager()  #create a watchmanager()
@@ -65,7 +73,9 @@ def do_monit(monit_path='./'):
     wdd = wm.add_watch(monit_path, mask, rec=True)  # 加入监控，mask，rec递归
     try:
         #防止启动多个的命令 设置进程号文件就可以防止启动多个
-        notifier.loop(daemonize=True, pid_file='/tmp/pyinotify2.pid')
+        #notifier.loop(daemonize=True, pid_file='/tmp/pyinotify2.pid')
+        notifier.loop(daemonize=True)
+
     except pyinotify.NotifierError, err:
         print >> sys.stderr, err
 
